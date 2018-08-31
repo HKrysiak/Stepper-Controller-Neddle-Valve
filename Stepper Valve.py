@@ -1,5 +1,14 @@
-Python 3.5.3 (default, Jan 19 2017, 14:11:04) 
+Python 3.5.3 (default, Jan 19 2017, 14:11:04)
 [GCC 6.3.0 20170124] on linux
 Type "copyright", "credits" or "license()" for more information.
 >>> import time
->>> 
+>>> import piplates.MOTORplate as MOTOR
+MOTOR.stepperCONFIG(0,'a','cw','F', 2000, 2)
+MOTOR.stepperMOVE(0,'a',200)
+flag = 1
+while(flag):
+    time.sleep(0.1)
+    stat = MOTOR.getINTflag0(0)
+    if (stat & 0x20):
+        flag = 0
+print "Move Complete!"
