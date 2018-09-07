@@ -1,13 +1,14 @@
+import time
+import piplates.MOTORplate as MOTOR
+
 res='y'
 while res!='n' or res!='N':
-    import time
-    import piplates.MOTORplate as MOTOR
+    
+    direction = raw_input("Enter roation direction ccw or cw: ") #Set stepper rotation direction
+    MOTOR.stepperCONFIG(0,'a',direction,'F', 2000, 2) #Set up stepper motor
+    steps = input("Enter number of steps: ") 
 
-    direction = raw_input("Enter roation direction ccw or cw: ")
-    MOTOR.stepperCONFIG(0,'a',direction,'F', 2000, 2)
-    steps = input("Enter number of steps: ")
-
-    MOTOR.stepperMOVE(0,'a',steps)
+    MOTOR.stepperMOVE(0,'a',steps) #tell stepper motor to move user input number of steps
 
     flag = 1
     while(flag):
